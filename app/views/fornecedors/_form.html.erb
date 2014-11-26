@@ -1,0 +1,85 @@
+  <%= form_for(@fornecedor) do |f| %>
+    <% if @fornecedor.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+  <div class="panel panel-default">
+  <div class="panel-heading">Fornecedor</div>
+  <div class="panel-body">
+   
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Empresa</label>
+          <%= f.text_field :empresa, :class => "form-control", :placeholder => "Nome da empresa" %>
+          <%= error_tag @fornecedor, :empresa %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Endereço</label>
+          <%= f.text_field :endereco, :class => "form-control", :placeholder => "Endereço" %>
+          <%= error_tag @fornecedor, :endereco %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cidade</label>
+          <%= f.text_field :cidade, :class => "form-control", :placeholder => "Cidade" %>
+          <%= error_tag @fornecedor, :cidade%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Estado</label>
+          <%= f.select(:estado, (['', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MT', 'MS','PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']), {}, :class => 'form-control' ) %>
+          <%= error_tag @fornecedor, :estado %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cep</label>
+          <%= f.text_field :cep, :class => "campo_cep form-control", :placeholder => "Cep" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Telefone</label>
+          <%= f.text_field :telefone, :class => "campo_telefone form-control", :placeholder => "(99) 9999-9999" %>
+          <%= error_tag @fornecedor, :telefone %>
+        </div>
+      </div>
+      
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Fax</label>
+          <%= f.text_field :fax, :class => "campo_fax form-control", :placeholder => "Fax" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Email</label>
+          <%= f.text_field :email, :class => "form-control", :placeholder => "exemplo@exemplo.com" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Cadastrar', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>

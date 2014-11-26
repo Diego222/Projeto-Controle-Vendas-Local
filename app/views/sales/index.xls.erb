@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+        <Cell><Data ss:Type="String">Desconto</Data></Cell>
+        <Cell><Data ss:Type="String">Valor total</Data></Cell>        
+        <Cell><Data ss:Type="String">Comentário</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+
+      </Row>
+
+      <% @sales.each do |sale| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= sale.amount %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= sale.discount %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= sale.total_amount %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sale.comments %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sale.created_at.strftime("%d-%m-%Y") %></Data></Cell>
+      </Row>
+   
+      <%end%>
+    </Table>
+  </Worksheet>
+</Workbook>
+

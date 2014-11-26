@@ -1,0 +1,6 @@
+<div class="panel-body">
+	Vendas: <%= number_to_currency raw_sales %><br />
+	Pago: <%= number_to_currency payment_total %><br />
+    <%= owed_balance >= 0 ? "Pendente: " : "Owe: " %><%= number_to_currency(owed_balance) %><br />
+    Exportar relátório de vendas completo: <%= link_to "Relatório", sales_path(format: "xls") %>
+</div>

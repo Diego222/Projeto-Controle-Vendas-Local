@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bom dia, <%= @pedido.fornecedor.empresa %></h1><br><br>
+    <p>
+      Solicitamos a vocẽs os seguintes produtos: 
+
+      <%= @pedido.pedido %><br>
+    </p>
+    <p><br>
+      E as seguintes observações:
+
+      <%= @pedido.observacoes %>
+    </p><br>
+    <p>Obrigado e tenham um bom dia!</p><br>
+
+    <h1>Art Nissi Artigos para Tapeçaria Ltda.</h1>
+  </body>
+</html>

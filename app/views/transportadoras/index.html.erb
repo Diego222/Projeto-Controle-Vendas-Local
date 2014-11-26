@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @transportadoras.each do |transportadora| %>
+              <td><%= transportadora.nome %></td>
+              <td><%= transportadora.cidade %></td>
+              <td><%= transportadora.email %></td>
+              <td><%= link_to 'Detalhes', edit_transportadora_path(transportadora) %> | <%= link_to 'Excluir', transportadora, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="panel-body">
+        <%= will_paginate @transportadora, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="col-sm-12">
+      <%= link_to 'Nova Transportadora', new_transportadora_path, :class => "btn btn-success btn-lg active" %>
+    </div>

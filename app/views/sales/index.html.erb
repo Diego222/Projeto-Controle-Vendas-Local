@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+  <div class="table-responsive">
+    
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Gerado em</th>
+          <th>Cliente</th>
+          <th>Funcionário</th>
+          <th>Total</th>
+          <th>Pago</th>
+          <th>Balanço</th>
+          <th>Ações</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @sales.each do |sale| %>
+          <tr class="<%= sale.remaining_balance == 0.00 && !sale.total_amount.blank? ? 'success' : '' %>">
+            <td><%= sale.id %></td>
+            <td><%= sale.created_at.strftime("%d/%m/%y %I:%M:%S %p")  %></td>
+            <td><%= sale.customer.blank? ? '-' : sale.customer.nome %></td>
+            <td><%= sale.funcionario.blank? ? '-' : sale.funcionario.nome %></td>
+            <td><%= number_to_currency sale.total_amount %></td>
+            <td><%= number_to_currency sale.paid_total %></td>
+            <td><%= sale.remaining_balance == 0.00 && sale.payments.count > 0 ? "Pago" : "#{number_to_currency sale.remaining_balance}" %></td>
+            <td><%= link_to 'Detalhes', edit_sale_path(sale) %> | <%= link_to 'Apagar', sale, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="panel-body">
+      <%= will_paginate @sales, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Sumário</div>
+
+  <!-- Table -->
+  <%= render :partial => 'template/sales_summary' %>
+</div>
+
+<br>
+
+
+<%= link_to 'Nova Venda', new_sale_path, :class => "btn btn-success btn-lg active" %>

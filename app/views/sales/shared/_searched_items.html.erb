@@ -1,0 +1,34 @@
+<h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Procurar Items</h4>
+<hr />
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Adicionar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% unless @available_items.blank? %>
+      	<% for item in @available_items %>
+          <tr>
+            <td><%= item.sku %></td>
+            <td><%= item.name %></td>
+            <td><%= item.description %></td>
+            <td><%= number_to_currency(item.price) %></td>
+            <%if item.stock_amount >= 1 %>
+            <td class="add_to_current_sale"><%= link_to url_for(:controller => 'sales', :action => 'create_line_item', :item_id => item.id, :sale_id => @sale.id, :quantity => 1), :remote => true do %><p><span class="glyphicon glyphicon-plus"></span></p><% end %></td><%end%>
+            <%if item.stock_amount < 1%>
+            <td class="add_to_current_sale"><div>Sem Estoque</div></td>
+          </tr>
+        <% end %>
+        <%end%>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

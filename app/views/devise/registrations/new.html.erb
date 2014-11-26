@@ -1,0 +1,33 @@
+<h2>Cadastro</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+    <%= f.email_field :email, :class => 'form-control', autofocus: true %>
+    </div>
+  </div>
+  <br>
+
+  <div class="control-group">
+    <%= f.label :password, "Senha", :class => 'control-label' %> <% if @validatable %><i> A senha deve conter no mínimo <%= @minimum_password_length %> caracteres</i><% end %>
+    <div class="controls">	
+      <%= f.password_field :password, :class => 'form-control', autocomplete: "off" %>
+    </div>
+  </div>
+  <br>
+
+  <div class="control-group">
+    <%= f.label :password_confirmation, "Confirme a Senha", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'form-control', autocomplete: "off" %>
+  	</div>
+  </div>
+  <br>
+
+  <%= f.submit "Cadastrar", :class => 'btn btn-primary' %>
+<% end %>
+
+<%= render "devise/shared/links" %>

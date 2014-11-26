@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">#<span class="sale_id"><%= @sale.id %>, Gerado: <%= @sale.created_at.strftime("%d/%m/%y %I:%M:%S %p")  %>, Última Atualização: <%= @sale.updated_at.strftime("%d/%m/%y %I:%M:%S %p")  %></span></div> 
+    <div class="panel-body">
+      
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs hidden-print">
+        <li class="active"><a href="#sale" data-toggle="tab">Venda</a></li>
+        <li><a href="#customer" data-toggle="tab">Cliente</a></li>
+        <li><a href="#comments" data-toggle="tab">Comentários</a></li>
+        <li><a href="#funcionario" data-toggle="tab">Funcionário</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="sale">
+          <%= render :partial => 'sales/shared/sale_tab' %>       
+        </div>
+        
+        <div class="tab-pane" id="customer">
+          <%= render :partial => 'sales/shared/customer_info', :object => @sale %>
+
+          <div class="added_customer">
+            <%= render :partial => 'sales/shared/added_customer' %>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="comments">
+          <%= render :partial => 'sales/shared/comments', :object => @sale %>
+        </div>
+
+        <div class="tab-pane" id="funcionario">
+          <%= render :partial => 'sales/shared/funcionario_info', :object => @sale %>
+
+          <div class="added_funcionario">
+            <%= render :partial => 'sales/shared/added_funcionario' %>
+          </div>
+        </div>
+
+        <%= render :partial => 'sales/shared/modals' %>
+      
+    </div>
+  </div>
+</div>

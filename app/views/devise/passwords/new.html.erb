@@ -1,0 +1,17 @@
+<h2>Esqueceu sua senha?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+  <%= f.label :email, :class => 'control-label' %>
+  <%= f.email_field :email, :class => 'form-control', autofocus: true %><br>
+
+  <%= f.submit "Enviar instruções para reset de senha", :class => 'btn btn-primary' %>
+<% end %>
+<br>
+
+<%= render "devise/shared/links" %>

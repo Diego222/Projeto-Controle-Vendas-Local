@@ -1,0 +1,51 @@
+<h4 class="text-primary"><span class="glyphicon glyphicon-credit-card"></span> Pagamento</h4>
+  <hr class="hidden-print" />
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Tipo de Pagamento</th>
+        <th>Valor</th>
+        <th>Efetuado em</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @sale.payments.blank? %>
+        <tr>
+          <td colspan="3">Não há pagamentos neste balanço ainda.</td>
+        </tr>
+      <% else %>
+        <%= fields_for @sale do |f|%>
+          <%= f.fields_for :payments do |e| %>
+    	      <tr>
+    	        <td><%= e.text_field :payment_type, :class => "form-control", :placeholder => "Tipo de Pagamento", :readonly => true %></td>
+    	        <td><%= e.text_field :amount, :class => "form-control", :placeholder => "Valor", :readonly => true %></td>
+    	        <td><%= e.text_field :created_at, :class => "form-control", :placeholder => "Efetuado em", :readonly => true %></td>
+    	      </tr>
+    	    <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<% if @sale.remaining_balance <= 0.00 && @sale.payments.count > 0 %>
+  <div class="alert alert-success hidden-print">Pagamento efetuado</div>
+  Alteração de valor: <%= number_to_currency @sale.change_due %>
+<% else %>
+  <h4 class="text-primary hidden-print"><span class="glyphicon glyphicon-shopping-cart"></span> Balanço</h4>
+
+  <div class="alert alert-danger hidden-print">
+    <%= number_to_currency @sale.remaining_balance %>
+  </div>
+
+
+  <hr class="hidden-print" />
+
+  <% unless @sale.total_amount.blank? %>
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg hidden-print" data-toggle="modal" data-target="#makePayment">
+      Realizar Pagamento
+    </button>  
+  <% end %>
+<% end %>

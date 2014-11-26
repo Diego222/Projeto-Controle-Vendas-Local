@@ -1,0 +1,25 @@
+<h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Funcionários</h4>
+<hr />
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cargo</th>
+        <th>Adicionar 
+      </tr>
+    </thead>
+
+    <tbody>
+      <% unless @available_funcionarios.blank? %>
+        <% for funcionario in @available_funcionarios %>
+          <tr>
+            <td><%= funcionario.nome %></td>
+            <td><%= funcionario.cargo %></td>
+            <td class="add_to_current_sale"><%= link_to url_for(:controller => 'sales', :action => 'create_funcionario_association', :funcionario_id => funcionario.id, :sale_id => @sale.id), :remote => true do %><p><span class="glyphicon glyphicon-plus"></span></p><% end %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

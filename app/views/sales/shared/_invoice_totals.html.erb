@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>Preço Base: </td>
+      <td><%= number_to_currency(@sale.amount) %></td>
+    </tr>
+    <% unless @sale.discount.blank? %>
+      <tr>
+        <td>Desconto: </td>
+        <td><%= number_to_currency(@sale.amount*@sale.discount) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Valor Total á pagar: </td>
+      <td><%= number_to_currency(@sale.total_amount) %></td>
+    </tr>
+  </tbody>
+</table>

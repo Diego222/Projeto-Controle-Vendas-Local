@@ -1,0 +1,50 @@
+<script src="http://code.highcharts.com/modules/exporting.js">
+</script>
+
+<div id="sales_chart" style="width: 800px; height: 500px;"></div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'sales_chart' },
+    title: { text: 'Vendas por dia' },
+    xAxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+                fontFamily: 'Tahoma'
+            },
+            rotation: -45
+        },
+        tickInterval: 24 * 3600 * 1000
+    },
+    yAxis: {
+      labels: {
+                format: 'R$ {value} '
+            },
+      tickInterval: 300,
+      min: 0,
+      gridLineColor: '#197F07',
+      title: { text: 'Reais' }
+    },
+    tooltip: {
+      formatter: function () {
+        return Highcharts.dateFormat("%e %B %Y", this.x) + ': ' +
+          '$' + Highcharts.numberFormat(this.y, 2);
+      }
+    },
+
+
+    series: [{
+      name: 'Total de vendas',
+      animation: true,
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
+      data: <%= (3.weeks.ago.to_date..Date.today).map { |date| Sale.total_on(date).to_f}.inspect %>
+    }],
+    exporting: {
+            filename: 'Relatório'
+        }
+  });
+});
+</script>

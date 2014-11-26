@@ -1,0 +1,72 @@
+  <%= form_for(@item) do |f| %>
+    <% if @item.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+  <div class="panel panel-default">
+  <div class="panel-heading">Item</div>
+  <div class="panel-body">
+   
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Categoria</label>
+          <%= f.collection_select :item_category_id, ItemCategory.all, :id, :name, {prompt: "Selecione uma Categoria"}, {class: "form-control"}  %>
+          <%= error_tag @item, :item_category %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nome do Item</label>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "Nome do Item" %>
+          <%= error_tag @item, :name %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Preço</label>
+          <%= f.text_field :price, :class => "form-control", :placeholder => "Preço" %>
+          <%= error_tag @item, :price %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Quantidade</label>
+          <%= f.text_field :stock_amount, :class => "form-control", :placeholder => "Quantidade" %>
+          <%= error_tag @item, :stock_amount %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Preço de Custo</label>
+          <%= f.text_field :cost_price, :class => "form-control", :placeholder => "Preço de Custo" %>
+          <%= error_tag @item, :cost_price %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="form-group">
+            <label>Fornecedor</label>
+            <%= f.collection_select :fornecedor_id, Fornecedor.all, :id, :empresa, {prompt: "Selecione um Fornecedor"}, {class: "form-control"}  %>
+            <%= error_tag @item, :fornecedor_id %>
+          </div>
+      </div>
+    </div>  
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Cadastrar', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>
+
+

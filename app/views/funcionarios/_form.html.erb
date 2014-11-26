@@ -1,0 +1,112 @@
+  <%= form_for(@funcionario) do |f| %>
+    <% if @funcionario.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+  <div class="panel panel-default">
+  <div class="panel-heading">Funcionário</div>
+  <div class="panel-body">
+   
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nome</label>
+          <%= f.text_field :nome, :class => "form-control", :placeholder => "Nome do Funcionário" %>
+          <%= error_tag @funcionario, :nome%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Data de Nascimento</label>
+          <%= f.text_field :data_nascimento, :class => "datepicker" %>
+          <%= error_tag @funcionario, :data_nascimento%>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Endereço</label>
+          <%= f.text_field :endereco, :class => "form-control", :placeholder => "Endereço" %>
+          <%= error_tag @funcionario, :endereco%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cidade</label>
+          <%= f.text_field :cidade, :class => "form-control", :placeholder => "Cidade" %>
+          <%= error_tag @funcionario, :cidade%>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Estado</label>
+          <%= f.select :estado, (['', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MT', 'MS','PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']), {}, :class => "form-control" %>
+          <%= error_tag @funcionario, :estado%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cep</label>
+          <%= f.text_field :cep, :class => "campo_cep form-control", :placeholder => "99.999-999" %>
+          <%= error_tag @funcionario, :cep%>
+        </div>
+      </div>
+      
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Telefone</label>
+          <%= f.text_field :telefone, :class => "campo_telefone form-control", :placeholder => "(99) 9999-9999" %>
+          <%= error_tag @funcionario, :telefone%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Admissão</label>
+          <%= f.text_field :admissao, :class => "datepicker" %>
+          <%= error_tag @funcionario, :admissao%>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cargo</label>
+          <%= f.select :cargo, (["", "Diretor", "Gerente", "Vendedor", "Analista"]), {}, :class => 'form-control' %>
+          <%= error_tag @funcionario, :cargo%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cpf</label>
+          <%= f.text_field :cpf, :class => "campo_cpf form-control", :placeholder => "999.999.999.99" %>
+          <%= error_tag @funcionario, :cpf%>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Identidade</label>
+          <%= f.text_field :identidade, :class => "campo_identidade form-control", :placeholder => "99.999.999.9" %>
+          <%= error_tag @funcionario, :identidade%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Cadastrar', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>

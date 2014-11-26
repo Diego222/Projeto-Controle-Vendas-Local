@@ -1,0 +1,27 @@
+<div class="create_an_item">
+  <%= form_for :custom_item, :url => url_for(:controller => "sales", :action => "create_custom_item", :sale_id => @sale.id, :format => :js), :method => "get", :remote => true, :html => { :class => "form_custom_item"} do |f| %>
+    
+    <div class="form-group">
+      <label>Categoria</label>
+      <%= f.collection_select :item_category_id, ItemCategory.all, :id, :name, {prompt: "Selecione uma categoria"}, {class: "form-control"}  %>
+    </div>
+    <div class="form-group">
+      <label>Nome</label>
+      <%= f.text_field :name, :class => "form-control", :placeholder => "Nome" %>
+    </div>
+    <div class="form-group">
+      <label>Descrição</label>
+      <%= f.text_area :description, :class => "form-control", :placeholder => "Descrição" %>
+    </div>
+    <div class="form-group">
+      <label>Preço</label>
+      <%= f.text_field :price, :class => "form-control", :placeholder => "Preço" %>
+    </div>
+    <div class="form-group">
+      <label>Quantidade</label>
+      <%= f.text_field :stock_amount, :class => "form-control", :placeholder => "Quantidade" %>
+    </div>
+    <div class="form-group"><%= f.submit 'Cadastrar', :class => "btn close_custom_modal" %></div>
+        
+  <% end %>
+</div>

@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+<div class="panel-heading">Categoria do Item</div>
+<div class="panel-body">
+<%= form_for(@item_category) do |f| %>
+    <% if @item_category.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nome</label>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "Nome da Categoria" %>
+          <%= error_tag @item_category, :name %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Descrição</label>
+          <%= f.text_area :description, :class => "form-control", :placeholder => "Descrição da Categoria" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Cadastrar Categoria', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>

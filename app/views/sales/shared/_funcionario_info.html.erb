@@ -1,0 +1,15 @@
+<div class="row item_search_wrapper hidden-print">
+  <div class="col-sm-4">
+    <h4 class="text-primary"><span class="glyphicon glyphicon-search"></span> Procurar</h4>
+    <hr />
+    <%= form_for :search, :url => url_for(:controller => "sales", :action => "update_funcionario_options", :format => :js), :method => "get", :remote => true do |f| %>
+      <%= f.text_field :funcionario_nome, :class => "form-control funcionario_search_input", :placeholder => "Procurar Funcionários" %>
+      <%= f.hidden_field :sale_id, :value => @sale.id %>
+    <% end %>
+  </div>
+  <div class="col-sm-8">
+    <div class="searched_funcionarios">
+      <%= render :partial => 'sales/shared/searched_funcionarios' %>
+    </div>
+  </div>
+</div>

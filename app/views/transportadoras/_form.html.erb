@@ -1,0 +1,77 @@
+<%= form_for(@transportadora) do |f| %>
+    <% if @transportadora.errors.any? %>
+    <div id="error_explanation">
+    Há erros no formulário, por favor verifique.
+    </div>
+    <% end %>
+
+<div class="panel panel-default">
+<div class="panel-heading">Transportadora</div>
+<div class="panel-body">
+
+   
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nome</label>
+          <%= f.text_field :nome, :class => "form-control", :placeholder => "Nome" %>
+          <%= error_tag @transportadora, :nome %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Endereço</label>
+          <%= f.text_field :endereco, :class => "form-control", :placeholder => "Endereço" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cidade</label>
+          <%= f.text_field :cidade, :class => "form-control", :placeholder => "Cidade" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Estado</label>
+          <%= f.select(:estado, (['', 'SP','MG', 'SC']), {}, :class => 'form-control' ) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Cep</label>
+          <%= f.text_field :cep, :class => " campo_cep form-control", :placeholder => "99.999-999" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Telefone</label>
+          <%= f.text_field :telefone, :class => "campo_telefone form-control", :placeholder => "(99) 9999-9999"%>
+          <%= error_tag @transportadora, :telefone %>
+    </div>
+  </div>
+</div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Email</label>
+          <%= f.text_field :email, :class => "form-control", :placeholder => "exemplo@exemplo.com" %>
+        </div>
+      </div>
+    </div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Cadastrar', :class => "btn btn-success btn-lg" %>
+  </div>
+ </div>
+ </div>
+</div>
+<% end %>
