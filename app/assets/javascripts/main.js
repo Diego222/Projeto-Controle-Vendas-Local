@@ -49,13 +49,6 @@ $(document).ready(function(){
 
 
 	// Jquery form validations
-	$(".form_custom_item").validate({
-		rules: {	
-			"custom_item[name]": {required: true },
-			"custom_item[price]": {required: true, number: true},
-			"custom_item[stock_amount]": {required: true, number: true}
-		}
-	});
 
 	$(".edit_sale").validate({
 		rules: {
@@ -66,7 +59,17 @@ $(document).ready(function(){
 	$("#new_item").validate({
 		rules: {
 			"item[sku]": {required: true },
-			"item[name]": {required: true, maxlength: 100 },
+			"item[name]": {required: true, maxlength: 50 },
+			"item[price]": {required: true, number: true, min: 0.01 },
+			"item[stock_amount]": {required: true, number: true, min: 1 },
+			"item[cost_price]": {required: true, number: true, min: 0.01 }
+		}
+	});
+
+	$(".edit_item").validate({
+		rules: {
+			"item[sku]": {required: true },
+			"item[name]": {required: true, maxlength: 50 },
 			"item[price]": {required: true, number: true, min: 0.01 },
 			"item[stock_amount]": {required: true, number: true, min: 1 },
 			"item[cost_price]": {required: true, number: true, min: 0.01 }
@@ -81,13 +84,14 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#new_user").validate({
+	$(".edit_item_category").validate({
 		rules: {
-			"user[email]": {required: true, email: true },
-			"user[username]": {required: true },
-			"user[password]": {required: true }
+			
+			"item_category[name]": {required: true, maxlength: 20 },
+			"item_category[description]": {maxlength: 100}
 		}
 	});
+
 
 	$("#new_customer").validate({
 		rules: {
@@ -99,7 +103,26 @@ $(document).ready(function(){
 		}
 	});
 
+	$(".edit_customer").validate({
+		rules: {
+			"customer[nome]": {required: true, maxlength: 20 },
+			"customer[sobrenome]": {required: true, maxlength: 50 },
+			"customer[address]": {maxlength: 50},
+			"customer[city]": {maxlength: 20},
+			"customer[email_address]": {email: true }
+		}
+	});
+
 	$("#new_fornecedor").validate({
+		rules: {
+			"fornecedor[empresa]": {required: true, maxlength: 50 },
+			"fornecedor[email]": {email: true },
+			"fornecedor[endereco]": {maxlength: 50 },
+			"fornecedor[cidade]": {maxlength: 20 }
+		}
+	});
+
+	$(".edit_fornecedor").validate({
 		rules: {
 			"fornecedor[empresa]": {required: true, maxlength: 50 },
 			"fornecedor[email]": {email: true },
@@ -124,12 +147,19 @@ $(document).ready(function(){
 		}
 	});
 
-
-	$("#create_custom_customer").validate({
+	$(".edit_funcionario").validate({
 		rules: {
-			"custom_customer[first_name]": {required: true },
-			"custom_customer[last_name]": {required: true },
-			"custom_customer[email_address]": {email: true }
+			"funcionario[nome]": {required: true, maxlength: 50 },
+			"funcionario[data_nascimento]": {required: true, date: true },
+			"funcionario[endereco]": {required: true, maxlength: 50 },
+			"funcionario[cidade]": {required: true, maxlength: 20 },
+			"funcionario[estado]": {required: true },
+			"funcionario[cep]": {required: true },
+			"funcionario[telefone]": {required: true },
+			"funcionario[admissao]": {required: true, date: true },
+			"funcionario[cargo]": {required: true },
+			"funcionario[cpf]": {required: true },
+			"funcionario[identidade]": {required: true }
 		}
 	});
 
