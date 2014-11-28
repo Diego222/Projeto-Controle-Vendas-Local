@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :authenticate_usuario!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :authenticate_usuario!, only: [:index, :show, :edit, :update, :destroy, :new]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers

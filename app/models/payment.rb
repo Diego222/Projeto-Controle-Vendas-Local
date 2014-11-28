@@ -1,6 +1,8 @@
 class Payment < ActiveRecord::Base
 	belongs_to :sale
 
+	validates_presence_of :amount, :message => "erro"
+
 	def amount_after_change
 		value = self.sale.total_amount - self.amount
 

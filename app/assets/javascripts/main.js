@@ -163,4 +163,11 @@ $(document).ready(function(){
 		}
 	});
 
+	$(".payment").validate({
+		rules: {
+			"payment[amount]": {required: true, number: true }
+		}
+	});
+
+
 });

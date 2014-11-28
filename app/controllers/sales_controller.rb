@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :authenticate_usuario!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :authenticate_usuario!, only: [:index, :show, :edit, :update, :destroy, :new]
   before_action :set_configurations
 
   def index
