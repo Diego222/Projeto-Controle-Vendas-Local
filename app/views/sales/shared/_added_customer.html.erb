@@ -8,11 +8,6 @@
         <tr>
           <th>Nome</th>
           <th>Sobrenome</th>
-          <th>Email</th>
-          <th>Telefone</th>
-          <th>Endereço</th>
-          <th>Cidade</th>
-          <th>Estado</th>
         </tr>
       </thead>
 
@@ -22,11 +17,6 @@
             <tr>
               <td><%= e.text_field :nome, :class => "form-control", :placeholder => "Nome", :readonly => true %></td>
               <td><%= e.text_field :sobrenome, :class => "form-control", :placeholder => "Sobrenome", :readonly => true %></td>
-              <td><%= e.text_field :email_address, :class => "form-control", :placeholder => "exemplo@eemplo.com", :readonly => true %></td>
-              <td><%= e.text_field :phone_number, :class => "form-control", :placeholder => "(99) 9999-9999", :readonly => true %></td>
-              <td><%= e.text_field :address, :class => "form-control", :placeholder => "Endereço", :readonly => true %></td>
-              <td><%= e.text_field :city, :class => "form-control", :placeholder => "Cidade", :readonly => true %></td>
-              <td><%= e.text_field :state, :class => "form-control", :placeholder => "Estado", :readonly => true %></td>
             </tr>
           <% end %>
         <% end %>
