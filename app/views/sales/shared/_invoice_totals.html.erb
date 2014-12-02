@@ -2,17 +2,17 @@
   <tbody>
     <tr>
       <td>Preço Base: </td>
-      <td><%= number_to_currency(@sale.amount) %></td>
+      <td><%= number_to_currency(@sale.amount, :unit => "R$") %></td>
     </tr>
     <% unless @sale.discount.blank? %>
       <tr>
         <td>Desconto: </td>
-        <td><%= number_to_currency(@sale.amount*@sale.discount) %></td>
+        <td><%= number_to_currency(@sale.amount*@sale.discount, :unit => "R$") %></td>
       </tr>
     <% end %>
     <tr>
       <td>Valor Total á pagar: </td>
-      <td><%= number_to_currency(@sale.total_amount) %></td>
+      <td><%= number_to_currency(@sale.total_amount, :unit => "R$") %></td>
     </tr>
   </tbody>
 </table>

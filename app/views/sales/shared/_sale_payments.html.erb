@@ -31,12 +31,12 @@
 
 <% if @sale.remaining_balance <= 0.00 && @sale.payments.count > 0 %>
   <div class="alert alert-success hidden-print">Pagamento efetuado</div>
-  Alteração de valor: <%= number_to_currency @sale.change_due %>
+  Alteração de valor: <%= number_to_currency @sale.change_due, :unit => "R$" %>
 <% else %>
   <h4 class="text-primary hidden-print"><span class="glyphicon glyphicon-shopping-cart"></span> Balanço</h4>
 
   <div class="alert alert-danger hidden-print">
-    <%= number_to_currency @sale.remaining_balance %>
+    <%= number_to_currency @sale.remaining_balance, :unit => "R$" %>
   </div>
 
 

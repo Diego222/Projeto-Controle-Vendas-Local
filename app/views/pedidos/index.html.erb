@@ -16,8 +16,6 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Fornecedor</th>
-            <th>Data</th>
             <th>Pedido</th>
             <th>Ações</th>
           </tr>
@@ -25,8 +23,6 @@
 
         <tbody>
           <% @pedidos.each do |pedido| %>
-              <td><%= pedido.fornecedor.empresa %></td>
-              <td><%= pedido.created_at.strftime("%d-%m-%Y")%></td>
               <td><%= pedido.pedido %></td>
               <td><%= link_to 'Detalhes', edit_pedido_path(pedido) %> | <%= link_to 'Excluir', pedido, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
             </tr>
@@ -41,5 +37,5 @@
 </div>
 
     <div class="col-sm-12">
-      <%= link_to 'Novo Pedido', new_pedido_path, :class => "btn btn-success btn-lg active" %>
+      <%= link_to 'Novo Pedido', new_pedido_path, :class => "btn btn-success btn-lg btn3d" %>
     </div>

@@ -3,7 +3,7 @@
 
 <label>Preço Base</label>
 <div class="input-group">
-  <span class="input-group-addon">$</span>
+  <span class="input-group-addon">R$</span>
   <input type="text" class="form-control" readonly value=<%= number_to_currency(@sale.amount, unit: '') %>>
 </div>
 
@@ -18,13 +18,13 @@
   		</option>
   	<% end %>
   </select>
-  <span class="input-group-addon">$<%= @sale.discount.blank? ? 0 : number_to_currency(@sale.total_amount, unit: '') %></span>
+  <span class="input-group-addon">R$<%= @sale.discount.blank? ? 0 : number_to_currency(@sale.total_amount, unit: '') %></span>
 </div>
 
 <hr />
 
 <label class="text-success">Valor Total</label>
 <div class="input-group has-success total_price_output">
-  <span class="input-group-addon price_output">$</span>
+  <span class="input-group-addon price_output">R$</span>
   <input type="text" class="form-control price_output" readonly value=<%= number_to_currency(@sale.total_amount, unit: '') %>>
 </div> 

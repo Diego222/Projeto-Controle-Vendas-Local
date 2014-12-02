@@ -12,6 +12,7 @@
         <Cell><Data ss:Type="String">Valor total</Data></Cell>        
         <Cell><Data ss:Type="String">Comentário</Data></Cell>
         <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Pago</Data></Cell>
 
       </Row>
 
@@ -22,6 +23,7 @@
         <Cell><Data ss:Type="Number"><%= sale.total_amount %></Data></Cell>
         <Cell><Data ss:Type="String"><%= sale.comments %></Data></Cell>
         <Cell><Data ss:Type="String"><%= sale.created_at.strftime("%d-%m-%Y") %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= sale.paid_total %></Data></Cell>
       </Row>
    
       <%end%>

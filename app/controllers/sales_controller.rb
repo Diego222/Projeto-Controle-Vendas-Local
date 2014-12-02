@@ -65,7 +65,7 @@ class SalesController < ApplicationController
 
   def update_customer_options
     set_sale
-    populate_items
+    populate_customers
     @available_customers = Customer.find(:all, :conditions => ['sobrenome LIKE ? AND published = true OR nome LIKE ? AND published = true OR email_address LIKE ? AND published = true OR phone_number LIKE ? AND published = true', "%#{params[:search][:customer_name]}%","%#{params[:search][:customer_name]}%", "%#{params[:search][:customer_name]}%", "%#{params[:search][:customer_name]}%"], :limit => 5)
 
     respond_to do |format|
@@ -75,7 +75,7 @@ class SalesController < ApplicationController
 
   def update_funcionario_options
     set_sale
-    populate_items
+    populate_funcionarios
     @available_funcionarios = Funcionario.find(:all, :conditions => ['nome LIKE ? OR cargo LIKE ?', "%#{params[:search][:funcionario_nome]}%", "%#{params[:search][:funcionario_nome]}%"], :limit => 5)
 
     respond_to do |format|
@@ -350,7 +350,12 @@ class SalesController < ApplicationController
 
     def populate_customers
      # @available_customers = Customer.all(:conditions => ['published', true], :limit => 5)
-      @available_customers = Customer.paginate(:page => params[:page], :per_page => 20).where(:published => true)
+      @available_customers = Customer.paginate(:page => params[:page], :per_page => 3).where(:published => true)
+    end
+
+    def populate_funcionarios
+     # @available_customers = Customer.all(:conditions => ['published', true], :limit => 5)
+      @available_funcionarios = Funcionario.paginate(:page => params[:page], :per_page => 3)
     end
 
     def remove_item_from_stock(item_id, quantity)

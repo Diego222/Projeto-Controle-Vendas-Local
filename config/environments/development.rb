@@ -27,7 +27,7 @@ PushvendorPos::Application.configure do
    # enable_starttls_auto: true  
     }
 
-  config.action_mailer.default_url_options = { :host => "artnissi.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

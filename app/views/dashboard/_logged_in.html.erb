@@ -20,8 +20,8 @@
           <td><%= sale.created_at.strftime("%d/%m/%y %I:%M:%S %p")  %></td>
           <td><%= sale.customer.blank? ? '-' : sale.customer.nome %></td>
           <td><%= sale.funcionario.blank? ? '-' : sale.funcionario.nome %></td>
-          <td><%= number_to_currency sale.total_amount %></td>
-          <td><%= number_to_currency sale.paid_total %></td>
+          <td><%= number_to_currency sale.total_amount, :unit => "R$" %></td>
+          <td><%= number_to_currency sale.paid_total, :unit => "R$" %></td>
           <td><%= sale.remaining_balance == 0.00 && sale.payments.count > 0 ? "Pago" : "#{number_to_currency sale.remaining_balance}" %></td>
           <td><%= link_to 'Detalhes', edit_sale_path(sale) %> | <%= link_to 'Excluir', sale, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
 	    	</tr>

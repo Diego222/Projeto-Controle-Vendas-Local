@@ -26,7 +26,7 @@
 <%= form_for(@sale) do |f| %>
   <%= render :partial => 'template/form_errors', :object => @sale %>
 
-  <h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Items</h4>
+  <h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Itens</h4>
   <hr class="hidden-print" />
   <div class="added_items">
     <%= render :partial => 'sales/shared/added_items', :locals=>{:f=>f} %>

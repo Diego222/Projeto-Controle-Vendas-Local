@@ -36,7 +36,7 @@
               <td><%= item.item_category.blank? ? '-' : item.item_category.name %></td>
               <td><%= item.stock_amount %></td>
               <td><%= item.amount_sold %></td>
-              <td><%= number_to_currency item.price %></td>
+              <td><%= number_to_currency item.price, :unit => "R$" %></td>
               <td><%= link_to 'Detalhes', edit_item_path(item) %> | <%= link_to 'Excluir', item, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
             </tr>
           <% end %>
@@ -50,7 +50,7 @@
 </div>
 
     <div class="col-sm-12">
-      <%= link_to 'Novo Item', new_item_path, :class => "btn btn-success btn-lg active" %>
+      <%= link_to 'Novo Item', new_item_path, :class => "btn btn-success btn-lg btn3d" %>
     </div>
 
     

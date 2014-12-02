@@ -169,5 +169,13 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#new_pedido").validate({
+		rules: {
+			"pedido[pedido]": {required: true, maxlength: 50 },
+			"pedido[email]": {required: true },
+			"pedido[email]": {email: true, required: true }
+		}
+	});
+
 
 });
